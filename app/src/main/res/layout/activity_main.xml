@@ -57,20 +57,24 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="59dp" />
 
-        <ScrollView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline5"
-            app:layout_constraintEnd_toStartOf="@+id/guideline9"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toTopOf="@+id/guideline">
+<!--        <ScrollView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/guideline5"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline9"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guideline7"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/guideline">-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_payment_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </ScrollView>
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline5"
+                app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintTop_toTopOf="@+id/guideline" />
+<!--        </ScrollView>-->
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"

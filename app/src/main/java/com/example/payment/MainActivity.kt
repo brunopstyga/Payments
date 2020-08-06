@@ -79,7 +79,7 @@ class MainActivity  : DaggerAppCompatActivity(){
          adaptercardlIssues = CardIssuersListAdapter(this)
 //        val arrayAdapter = ArrayAdapter(applicationContext, R.layout.simple_spinner_item, listName)
 
-        adaptercardlIssues.setData(listCardIssues)
+//        adaptercardlIssues.setData(listCardIssues)
         recyclerView = binding.recyclerviewPaymentList
         binding.recyclerviewPaymentList.adapter = adapterPaymenyList
         binding.recyclerviewCardIssuers.adapter = adaptercardlIssues

@@ -18,13 +18,13 @@ class PaymenyListAdapter constructor(context: Context, val clickListener : Payme
 
     inner class WordViewHolder(val binding: RecycleviewPaymentItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(paymentMethods: PaymentMethodsItem, clickListener : PaymentListener) {
-                with(binding) {
-                binding.textViewName.text = Editable.Factory.getInstance().newEditable(paymentMethods.name)
-               Glide.with(binding.imageViewCar.context)
-                   .load(paymentMethods.thumbnail)
-                   .into(imageViewCar)
-                   binding.clickListener = clickListener
-            }
+            binding.textViewName.text = paymentMethods.name
+            binding.list = paymentMethods
+            binding.payment = paymentMethods
+            Glide.with(binding.imageViewCar.context)
+                .load(paymentMethods.thumbnail)
+                .into(binding.imageViewCar)
+            binding.clickListener = clickListener
         }
     }
 

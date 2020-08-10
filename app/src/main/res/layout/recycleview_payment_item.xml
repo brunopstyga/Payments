@@ -6,13 +6,13 @@
     <data>
         <variable
             name="list"
-            type="com.example.pagos.data.methodspaymentresponse.PaymentMethodsItem" />
+            type="com.example.pagos.data.issuerscardresponse.CardIssuersItem" />
         <variable
             name="clickListener"
-            type="com.example.pagos.presentation.PaymenyListAdapter.PaymentListener" />
+            type="com.example.pagos.presentation.ListAdapterCard.ItemClickListener" />
         <variable
             name="payment"
-            type="com.example.pagos.data.methodspaymentresponse.PaymentMethodsItem"/>
+            type="com.example.pagos.data.issuerscardresponse.CardIssuersItem"/>
 
     </data>
 
@@ -20,7 +20,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> clickListener.onClick(list)}">
+        android:onClick="@{() -> clickListener.itemClicked(list)}">
 
         <ImageView
             android:id="@+id/imageView_car"

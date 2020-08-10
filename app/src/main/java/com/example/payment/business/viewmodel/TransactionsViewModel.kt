@@ -1,8 +1,11 @@
 package com.example.pagos.business.viewmodel
 
 import android.app.Application
+import android.graphics.drawable.Drawable
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.*
-import com.example.pagos.data.installmentsresponse.InstallmentItem
+import com.bumptech.glide.Glide
 import com.example.pagos.data.issuerscardresponse.CardIssuersItem
 import com.example.pagos.data.methodspaymentresponse.PaymentMethodsItem
 import com.example.pagos.repository.Repository
@@ -16,18 +19,16 @@ class TransactionsViewModel @Inject constructor(
    )
     : AndroidViewModel(application){
 
-    private val _navigatePaymentDetail = MutableLiveData<String>()
-    val navigatePaymentDetail
-        get() = _navigatePaymentDetail
+    companion object {
+        @JvmStatic
+        @BindingAdapter("profileImage")
+        fun loadImage(view: ImageView, profileImage: String) {
+            Glide.with(view.context)
+                .load(profileImage)
+                .into(view)
+        }
 
-    fun pymentMethoClicked(id: String) {
-        _navigatePaymentDetail.value = id
-    }
-
-
-    fun onPaymentClicked(id: String) {
-        _navigatePaymentDetail?.value = id
-    }
+}
 
     fun getMethodPaymetList() : MutableLiveData<List<PaymentMethodsItem>> = geoRepository.fetchListPaymentMethods()
 

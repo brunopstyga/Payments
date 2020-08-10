@@ -1,28 +1,28 @@
 package com.example.pagos.presentation
 
 import android.content.Context
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.pagos.data.issuerscardresponse.CardIssuersItem
 import com.example.pagos.data.methodspaymentresponse.PaymentMethodsItem
 import com.example.pagos.databinding.RecycleviewPaymentItemBinding
 
-class PaymenyListAdapter constructor(context: Context, val clickListener : PaymentListener ):
-    RecyclerView.Adapter<PaymenyListAdapter.WordViewHolder>() {
+class ListAdapterCard constructor(context: Context, val clickListener : ItemClickListener ):
+    RecyclerView.Adapter<ListAdapterCard.WordViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    var data = emptyList<PaymentMethodsItem>()
+    var data = emptyList<CardIssuersItem>()
 
 
     inner class WordViewHolder(val binding: RecycleviewPaymentItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(paymentMethods: PaymentMethodsItem, clickListener : PaymentListener) {
-            binding.textViewName.text = paymentMethods.name
-            binding.list = paymentMethods
-            binding.payment = paymentMethods
+        fun bind(cardIssuersItem: CardIssuersItem, clickListener : ItemClickListener) {
+            binding.textViewName.text = cardIssuersItem.name
+            binding.list = cardIssuersItem
+            binding.payment = cardIssuersItem
             Glide.with(binding.imageViewCar.context)
-                .load(paymentMethods.thumbnail)
+                .load(cardIssuersItem.thumbnail)
                 .into(binding.imageViewCar)
             binding.clickListener = clickListener
         }
@@ -35,17 +35,17 @@ class PaymenyListAdapter constructor(context: Context, val clickListener : Payme
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: PaymenyListAdapter.WordViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListAdapterCard.WordViewHolder, position: Int) {
         holder.bind( data[position], clickListener)
     }
 
-    internal fun setData(data: List<PaymentMethodsItem>) {
+    internal fun setData(data: List<CardIssuersItem>) {
         this.data = data
         notifyDataSetChanged()
     }
 
-    class PaymentListener(val clickListener : (PaymentMethodsId : String) -> Unit) {
-        fun onClick(paymentMethodsItem: PaymentMethodsItem) = clickListener(paymentMethodsItem.id)
+    interface ItemClickListener{
+        fun itemClicked(cardIssuersItem: CardIssuersItem)
     }
 
 }

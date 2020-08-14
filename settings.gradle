@@ -1,2 +1,2 @@
-rootProject.name='Geopagos'
+rootProject.name='Pagos'
 include ':app'

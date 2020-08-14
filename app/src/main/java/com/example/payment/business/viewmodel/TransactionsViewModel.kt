@@ -1,11 +1,11 @@
 package com.example.pagos.business.viewmodel
 
 import android.app.Application
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.*
 import com.bumptech.glide.Glide
+import com.example.pagos.data.installmentsresponse.InstallmentItem
 import com.example.pagos.data.issuerscardresponse.CardIssuersItem
 import com.example.pagos.data.methodspaymentresponse.PaymentMethodsItem
 import com.example.pagos.repository.Repository
@@ -25,16 +25,16 @@ class TransactionsViewModel @Inject constructor(
         fun loadImage(view: ImageView, profileImage: String) {
             Glide.with(view.context)
                 .load(profileImage)
+                .override(200, 150)
                 .into(view)
         }
-
 }
 
-    fun getMethodPaymetList() : MutableLiveData<List<PaymentMethodsItem>> = geoRepository.fetchListPaymentMethods()
+    fun getCardIssuetsMethood() : MutableLiveData<List<PaymentMethodsItem>> = geoRepository.fetchListCardIssuers()
 
     fun getMethodCardIssuers() : MutableLiveData<List<CardIssuersItem>> = geoRepository.fetchListCurrentCardIssuers()
 
-//    fun getMethodInstallment() : MutableLiveData<List<InstallmentItem>> = geoRepository.fetchListCurrentInstallments()
+    fun getMethodInstallment() : MutableLiveData<List<InstallmentItem>> = geoRepository.fetchListCurrentInstallments()
 
 
 }

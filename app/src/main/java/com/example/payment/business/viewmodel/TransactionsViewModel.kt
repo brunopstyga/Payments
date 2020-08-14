@@ -25,6 +25,7 @@ class TransactionsViewModel @Inject constructor(
         fun loadImage(view: ImageView, profileImage: String) {
             Glide.with(view.context)
                 .load(profileImage)
+                .override(200,150)
                 .into(view)
         }
 

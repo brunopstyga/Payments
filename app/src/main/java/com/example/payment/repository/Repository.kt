@@ -39,19 +39,6 @@ companion object {
     var dataInstallmentItem: MutableLiveData<List<InstallmentItem>> =
         MutableLiveData<List<InstallmentItem>>()
 
-//    fun update(dataPaymMethos: DataPaymMethos) : Unit {
-//        this.dataPaymMethos = dataPaymMethos
-//       return entries.set(dataPaymMethos.list)
-//    }
-
-//    @RequiresApi(Build.VERSION_CODES.N)
-//    fun listPaymentMethods(paymentList: List<PaymentMethodsItem>) {
-//      paymentList.forEach {
-//                listPayment.add(PaymentMethods(it.id.toString(),it.name.toString(),
-//                    it.paymentTypeId.toString(),it.status.toString()))
-//        }
-////               return listPayment
-//    }
 
   fun fetchListPaymentMethods() : MutableLiveData<List<PaymentMethodsItem>>{
       GlobalScope.launch(Dispatchers.IO){
@@ -101,7 +88,6 @@ companion object {
             listName.add(it.name.toString())
         }
     }
-
 
     override fun listCardIssues(cardIssuersItem: List<CardIssuersItem>) {
         cardIssuersItem.forEach {

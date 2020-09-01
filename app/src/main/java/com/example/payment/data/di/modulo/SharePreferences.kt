@@ -7,8 +7,8 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class SharePreferences(val context: Context) {
+class SharePreferences {
     @Provides
-    fun provideSharedPreferences() : SharedPreferences? =
+    fun provideSharedPreferences(context: Context) : SharedPreferences =
         context.getSharedPreferences(Util.SP_FILE, Context.MODE_PRIVATE)
 }

@@ -12,7 +12,7 @@ import javax.inject.Singleton
 const val BASE_URL = "https://api.mercadopago.com/"
 
 @Module
-class GeoNetwork {
+class PagoNetwork {
 
     val DEBUG = false
     @Provides

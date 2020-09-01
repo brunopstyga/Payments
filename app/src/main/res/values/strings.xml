@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Pagos</string>
+    <string name="addamount">Ingrese el monto a pagar</string>
 </resources>

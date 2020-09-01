@@ -12,8 +12,8 @@ import com.bumptech.glide.Glide
 import com.example.pagos.data.issuerscardresponse.CardIssuersItem
 import com.example.pagos.databinding.RecycleviewPaymentItemBinding
 
- class CardIssuersListAdapter constructor(val context: Context):
-    RecyclerView.Adapter<CardIssuersListAdapter.cardlIssuesViewHolder>() {
+ class AdapterInstallment constructor(val context: Context):
+    RecyclerView.Adapter<AdapterInstallment.cardlIssuesViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     var data = emptyList<CardIssuersItem>()
@@ -38,7 +38,7 @@ import com.example.pagos.databinding.RecycleviewPaymentItemBinding
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: CardIssuersListAdapter.cardlIssuesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AdapterInstallment.cardlIssuesViewHolder, position: Int) {
         holder.bind( data[position])
     }
 

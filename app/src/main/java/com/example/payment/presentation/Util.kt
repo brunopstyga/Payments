@@ -8,5 +8,6 @@ class Util {
         const val BIN = 503175
         const val ISSUERID = 286
         const val AMOUNT = "100"
+        val SP_FILE : String = "DATA"
     }
 }

@@ -9,6 +9,7 @@ import com.example.pagos.data.issuerscardresponse.CardIssuersItem
 import com.example.pagos.data.methodspaymentresponse.PaymentMethods
 import com.example.pagos.data.methodspaymentresponse.PaymentMethodsItem
 import com.example.pagos.presentation.Util
+import com.example.payment.presentation.MySharePreferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -22,6 +23,8 @@ import javax.inject.Inject
 class Repository @Inject constructor(private val apiService: ApiService?) :
     GetListDataApi {
 
+    @Inject
+    lateinit var mySharePreferences: MySharePreferences
     val listName : MutableList<String> = ArrayList()
     val listCard : MutableList<String> = ArrayList()
 
@@ -39,8 +42,7 @@ companion object {
     var dataInstallmentItem: MutableLiveData<List<InstallmentItem>> =
         MutableLiveData<List<InstallmentItem>>()
 
-
-  fun fetchListPaymentMethods() : MutableLiveData<List<PaymentMethodsItem>>{
+  fun fetchListCardIssuers() : MutableLiveData<List<PaymentMethodsItem>>{
       GlobalScope.launch(Dispatchers.IO){
           val response =  apiService !!.getCurrentPaymentMethods(Util.API_KEY)
           if (response.isSuccessful){
@@ -70,7 +72,11 @@ companion object {
 
     fun fetchListCurrentInstallments() : MutableLiveData<List<InstallmentItem>>{
     GlobalScope.launch(Dispatchers.IO) {
-        val response = apiService !!.getCurrentInstallments(Util.API_KEY , Util.BIN , Util.AMOUNT ,Util.ISSUERID)
+        val response = apiService !!.getCurrentInstallments(
+            Util.API_KEY ,
+            Util.BIN ,
+            Integer.toString(mySharePreferences.getAmount("-1")),
+            mySharePreferences.getData(""))
         if (response.isSuccessful){
 //            response.body()?.let { listCardIssues(it) }
             dataInstallmentItem.postValue(response.body())

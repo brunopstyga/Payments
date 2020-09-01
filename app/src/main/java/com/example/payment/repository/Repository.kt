@@ -95,7 +95,6 @@ companion object {
         }
     }
 
-
     override fun listCardIssues(cardIssuersItem: List<CardIssuersItem>) {
         cardIssuersItem.forEach {
             listCardIssues.add(CardIssuersItem(it.id.toString(),it.name.toString(),

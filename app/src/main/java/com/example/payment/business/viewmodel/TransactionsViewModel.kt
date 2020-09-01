@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 class TransactionsViewModel @Inject constructor(
     application: Application,
-    public val geoRepository: Repository
+    public val Repository: Repository
 
    )
     : AndroidViewModel(application){
@@ -30,11 +30,11 @@ class TransactionsViewModel @Inject constructor(
         }
 }
 
-    fun getCardIssuetsMethood() : MutableLiveData<List<PaymentMethodsItem>> = geoRepository.fetchListCardIssuers()
+    fun getCardIssuetsMethood() : MutableLiveData<List<PaymentMethodsItem>> = Repository.fetchListCardIssuers()
 
-    fun getMethodCardIssuers() : MutableLiveData<List<CardIssuersItem>> = geoRepository.fetchListCurrentCardIssuers()
+    fun getMethodCardIssuers() : MutableLiveData<List<CardIssuersItem>> = Repository.fetchListCurrentCardIssuers()
 
-    fun getMethodInstallment() : MutableLiveData<List<InstallmentItem>> = geoRepository.fetchListCurrentInstallments()
+    fun getMethodInstallment() : MutableLiveData<List<InstallmentItem>> = Repository.fetchListCurrentInstallments()
 
 
 }
